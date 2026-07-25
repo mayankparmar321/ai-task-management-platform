@@ -1,8 +1,14 @@
 import Form from "next/form"
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { prisma } from '../src/db'
+import { prisma } from '@/src/db'
 export default async function Home() {
+
+  const tasks = await prisma.task.findMany({
+    where:{authorId:24},
+  })
+
+  
   
 async function createTask(formData: FormData) {
     "use server";
@@ -15,6 +21,7 @@ async function createTask(formData: FormData) {
         authorId: 24,
       },
     });
+
     revalidatePath("/");
     redirect("/");
   }
@@ -52,6 +59,16 @@ async function createTask(formData: FormData) {
           Create Task
         </button>
       </Form>
+      <div>
+        <h1>Tasks:</h1>
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              {task.title}:{task.description}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
     
   );
