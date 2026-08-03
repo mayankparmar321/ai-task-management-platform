@@ -3,15 +3,13 @@
 // import Form from "next/form"
 // import { revalidatePath } from "next/cache";
 // import { redirect } from "next/navigation";
-// import { prisma } from '@/src/db'
+
 import { useRouter } from "next/navigation";
 export default  function Home() {
 
    const router = useRouter();
 
-//   const tasks = await prisma.task.findMany({
-//     where:{authorId:24},
-//   })
+
 
   
   

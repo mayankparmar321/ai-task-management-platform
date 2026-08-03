@@ -1,33 +1,36 @@
-"use client";
+import DashboardPage from "@/src/sign-out";
+import { prisma } from '@/src/db'
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
-import { useRouter } from "next/navigation";
-import { useSession, signOut } from "@/lib/auth-client";
-import { useEffect } from "react";
+export default async function Dashboard() {
 
-export default function DashboardPage() {
-  const router = useRouter();
-  const { data: session, isPending } = useSession();
+   const session = await auth.api.getSession({
+    headers: await headers(),
+  });
 
-  useEffect(() => {
-    if (!isPending && !session?.user) {
-      router.push("/sign-in");
-    }
-  }, [isPending, session, router]);
-
-  if (isPending) return <p className="text-center mt-8 text-white">Loading...</p>;
-  if (!session?.user) return <p className="text-center mt-8 text-white">Redirecting...</p>;
-
-  const { user } = session; 
+  const email = session?.user.email;
+  const userid = await prisma.user.findUnique({
+    where:{ email: email}
+  })
+     const tasks = await prisma.task.findMany({
+    where:{authorId: userid?.id},
+  })
 
   return (
-    <main className="max-w-md h-screen flex items-center justify-center flex-col mx-auto p-6 space-y-4 ">
-      <h1 className="text-2xl font-bold">Dashboard</h1>
-      <p>Welcome, {user.name || "User"}!</p>
-      <p>Email: {user.email}</p>
-      <button
-        onClick={() => signOut()}
-        className="w-full bg-white text-black font-medium rounded-md px-4 py-2 hover:bg-gray-200">submit
-      </button>
-    </main>
+    <>
+    <div>
+        <h1>Tasks:</h1>
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              {task.title}:{task.description}
+            </li>
+          ))}
+        </ul>
+      </div>
+    <DashboardPage />
+    </>
   );
 }
+
