@@ -1,6 +1,7 @@
-import { prisma } from "@/src/db";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
+import { prisma } from "@/src/db";
+import DeleteButton from "./delete-button";
 
 export default async function ShowTask() {
   const session = await auth.api.getSession({
@@ -8,12 +9,14 @@ export default async function ShowTask() {
   });
 
   const email = session?.user.email;
-  const userid = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: { email: email },
   });
+
   const tasks = await prisma.task.findMany({
-    where: { authorId: userid?.id },
+    where: { authorId: user?.id },
   });
+
   return (
     <div>
       <h1 className="text-center font-extrabold">Tasks:</h1>
@@ -25,6 +28,7 @@ export default async function ShowTask() {
           >
             <h2 className="font-bold">{task.title}</h2>
             <p>{task.description}</p>
+            <DeleteButton taskId={task.id} />
           </div>
         ))}
       </div>
