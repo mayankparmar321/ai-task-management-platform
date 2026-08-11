@@ -2,6 +2,8 @@ import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/src/db";
 import DeleteButton from "./delete-button";
+import { Button } from "@/components/ui/button";
+import EditTask from "./edit-task";
 
 export default async function ShowTask() {
   const session = await auth.api.getSession({
@@ -15,6 +17,7 @@ export default async function ShowTask() {
 
   const tasks = await prisma.task.findMany({
     where: { authorId: user?.id },
+    orderBy: { id: "desc" },
   });
 
   return (
@@ -26,8 +29,11 @@ export default async function ShowTask() {
             className="block max-w-2xs text-center p-4 bg-gray-300 border-2 rounded-2xl wrap-break-word"
             key={task.id}
           >
-            <h2 className="font-bold">{task.title}</h2>
-            <p>{task.description}</p>
+            <EditTask
+              id={task.id}
+              title={task.title}
+              description={task.description || ""}
+            />
             <DeleteButton taskId={task.id} />
           </div>
         ))}

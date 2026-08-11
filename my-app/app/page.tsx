@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <main className="flex flex-col items-center justify-center h-screen bg-neutral-950 text-white">
-        <h1 className="w-full text-center text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl dark:text-white m-10">
+        <h1 className="w-full text-center text-5xl font-semibold tracking-tight text-balance text-white sm:text-7xl dark:text-white m-10">
           AI Task Management App
         </h1>
         <div className="flex gap-4">

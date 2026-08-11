@@ -10,7 +10,7 @@ export default function Header() {
 
   useEffect(() => {
     if (!isPending && !session?.user) {
-      router.push("/sign-in");
+      router.push("/");
     }
   }, [isPending, session, router]);
 
