@@ -26,7 +26,7 @@ export default async function ShowTask() {
       <div className="flex flex-wrap items-center justify-evenly gap-4">
         {tasks.map((task) => (
           <div
-            className="block max-w-2xs text-center p-4 bg-gray-300 border-2 rounded-2xl wrap-break-word"
+            className="block max-w-2xs text-center p-4 bg-neutral-950 text-white border-2 rounded-2xl wrap-break-word"
             key={task.id}
           >
             <EditTask

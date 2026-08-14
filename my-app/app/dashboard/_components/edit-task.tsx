@@ -67,7 +67,7 @@ export default function EditTask({
             name="status"
             id="status"
             value={status}
-            className="inline m-2"
+            className="inline m-2 text-black bg-white"
             onChange={(e) => {
               setStatus(e.target.value);
             }}
@@ -78,11 +78,19 @@ export default function EditTask({
             <option value="DONE">DONE</option>
             <option value="ARCHIVED">ARCHIVED</option>
           </select>
-          <Button type="submit">Save</Button>
+          <Button
+            className="bg-white text-black hover:bg-white hober:text-black"
+            type="submit"
+          >
+            Save
+          </Button>
         </Form>
       </div>
       <span className={detailClass}>
-        <Button className="rounded-2xl p-2" onClick={changeEdit}>
+        <Button
+          className="rounded-2xl p-2 bg-white text-black hover:bg-white hober:text-black"
+          onClick={changeEdit}
+        >
           Edit
         </Button>
       </span>

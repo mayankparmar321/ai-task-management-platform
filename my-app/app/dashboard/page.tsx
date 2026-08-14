@@ -8,8 +8,10 @@ export default async function Dashboard() {
   return (
     <>
       <Header />
-      <CreatetaskForm />
-      <ShowTask />
+      <div className="flex">
+        <CreatetaskForm />
+        <ShowTask />
+      </div>
     </>
   );
 }

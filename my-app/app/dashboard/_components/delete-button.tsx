@@ -9,7 +9,10 @@ export default function DeleteButton({ taskId }: { taskId: string }) {
   };
   return (
     <>
-      <Button onClick={handleDelete} className="rounded-2xl p-2">
+      <Button
+        onClick={handleDelete}
+        className="rounded-2xl p-2 bg-white text-black hover:bg-white hober:text-black"
+      >
         Delete
       </Button>
     </>

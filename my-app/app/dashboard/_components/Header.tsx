@@ -22,7 +22,7 @@ export default function Header() {
   const { user } = session;
 
   return (
-    <main className="w-full  flex justify-between items-center bg-gray-300 p-4  ">
+    <main className="w-full  flex justify-between items-center bg-black text-white p-4  ">
       <p className="">Email: {user.email}</p>
       <button
         onClick={() => signOut()}
