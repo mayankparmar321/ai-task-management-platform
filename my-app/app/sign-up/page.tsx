@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { signUp } from "@/lib/auth-client";
 
 export default function SignUpPage() {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
@@ -22,7 +23,7 @@ export default function SignUpPage() {
     if (res.error) {
       setError(res.error.message || "Something went wrong.");
     } else {
-      redirect("/dashboard");
+      router.push("/sign-in");
     }
   }
 
