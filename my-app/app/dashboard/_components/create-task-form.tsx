@@ -32,12 +32,12 @@ export default async function CreatetaskForm() {
   }
 
   return (
-    <div className="w-2xs rounded-2xl m-2 p-2 content-center mx-auto border-2 bg-neutral-950 text-white">
+    <div className="w-2xs sm:w-2xl sm:h-fit rounded-2xl mx-auto p-2 content-center  border-2 bg-neutral-950 text-white">
       <Form
         action={createTask}
         className="space-y-6 flex flex-col   items-center  justify-center"
       >
-        <div>
+        <div className="w-full">
           <label htmlFor="title" className="block text-center text-lg mb-2">
             Title
           </label>
@@ -49,7 +49,7 @@ export default async function CreatetaskForm() {
             className="w-full px-4 py-2 border rounded-lg"
           />
         </div>
-        <div>
+        <div className="w-full">
           <label
             htmlFor="description"
             className="block text-center text-lg mb-2"

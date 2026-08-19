@@ -27,7 +27,7 @@ export default function SignInPage() {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-500">
-      <main className="max-w-xl flex items-center justify-center flex-col mx-auto p-6 space-y-4 bg-neutral-950 text-white rounded-4xl ">
+      <main className="max-w-xl flex items-center justify-center flex-col mx-auto m-2 p-6 space-y-4 bg-neutral-950 text-white rounded-4xl ">
         <h1 className="text-2xl font-bold">Sign In</h1>
         {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">

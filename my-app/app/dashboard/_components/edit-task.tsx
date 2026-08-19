@@ -43,9 +43,9 @@ export default function EditTask({
   return (
     <>
       <div className={detailClass}>
-        <h2 className="font-bold inline">{title}</h2>
-        <p>{description}</p>
-        <p className="font-bold">{status}</p>
+        <h2 className="font-bold inline text-slate-50">{title}</h2>
+        <p className="text-slate-500">{description}</p>
+        <p className="font-bold ">{status}</p>
       </div>
       <div className={inputClass}>
         <Form action={handleEdit}>

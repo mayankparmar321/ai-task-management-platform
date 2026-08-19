@@ -21,12 +21,12 @@ export default async function ShowTask() {
   });
 
   return (
-    <div>
+    <div className="block w-full">
       <h1 className="text-center font-extrabold">Tasks:</h1>
       <div className="flex flex-wrap items-center justify-evenly gap-4">
         {tasks.map((task) => (
           <div
-            className="block max-w-2xs text-center p-4 bg-neutral-950 text-white border-2 rounded-2xl wrap-break-word"
+            className="block max-w-2xs text-center p-4 bg-slate-800 text-slate-50 border-2 rounded-2xl wrap-break-word"
             key={task.id}
           >
             <EditTask
